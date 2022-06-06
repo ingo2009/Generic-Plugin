@@ -41,7 +41,7 @@ class Plugin
 		$cmd = "Show";	// also list, for several items
 
 		// to see if we are alive
-		message("Plugin::__construct()");
+//		message("Plugin::__construct()");
 
 /* interesting info for the Log class, now please impllement it
 
@@ -60,6 +60,7 @@ echo "<br />";
 		$this->RunCommand($cmd);
     }
 
+// nice method will be called before anythings happens, good for testing weird stuff…
 	protected function PreInit()
     {
 		echo "Hello world. <br /><br />This will become the admin area";
@@ -67,12 +68,25 @@ echo "<br />";
 		echo "<br />1. GetContent_After hook, you can see the greetings on every single published page e.g. the home <a href='/'>page</a>.";
 		// http://ubuntu-laptop.local/index.php
 		echo "<br />2. A gadget, will render after activation in the <a href='Admin_Theme_Content/Edit/default'>layout editor</a>";
+// TODO: get rid of this code…
+//       and all the message() calls , will be replaced by Log4P class…
+/*
+		global $addonRelativeCode, $addonPathCode, $addonFolderName, $addonCodeFolder;
+		echo "<br />addonRelativeCode = $addonRelativeCode<br />";
+		echo "addonPathCode = $addonPathCode<br />";
+		echo "addonFolderName = $addonFolderName<br />";
+		echo "addonCodeFolder = $addonCodeFolder<br />";
+		echo $_SERVER['DOCUMENT_ROOT']."<br />";
 
+*/
+// include test, can I include a file from a different plugin
+//		require('/home/ingo/Dev/web/workspace/htdocs/addons/DeepL-Translator/Install_Check.php');
+//		require('../DeepL-Translator/Install_Check.php');
 	}
 
     protected function Init($object)
     {
-		message("Plugin::Init()");
+//		message("Plugin::Init()");
 
 		// initialize greetingObjects
 		// self::$greetingModel = new Generic\Model\Greeting("Hello from generic");
@@ -86,9 +100,7 @@ echo "<br />";
 	// delegation method
 	protected function RunCommand($cmd)
 	{
-		message("Plugin::RunCommand()");
-
-		message("Plugin::RunCommand(),cmd = ".$cmd);
+//		message("Plugin::RunCommand(),cmd = ".$cmd);
 
 		switch ($cmd)
 		{
